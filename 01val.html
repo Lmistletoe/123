@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>val() show() hide() 에 대해서 알아본기  </title>
+<style type="text/css">
+	
+	/* Class . */
+	.answerCheck {
+		margin: 10px;
+	}
+
+</style>
+<script type="text/javascript" src="/JqueryStudy/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	/* 정답이 맞으면 O 틀리면 X */
+	$(function(){		
+		
+		$(".answerCheck").hide();
+		
+		$("#btnOK").bind("click", function(){
+			var userAnswer = $("#answer").val().trim(); //val=value 값을 얻어온다. 
+			if(userAnswer == "17") { //userAnswer 은 문자이다 => Web은 무조건 String 이다.
+				$(".answerCheck").hide();
+				$(".okAnswer").show();
+				
+			}
+			else {
+				$(".answerCheck").hide();
+				$(".noAnswer").show()
+			}
+		});
+			
+		
+		$("#btnNO").bind("click", function(){
+			$(".answerCheck").hide();
+		});
+		
+	}); //$(function(){ 
+
+</script>
+
+</head>
+<body>
+	<form name="frm">
+		문제 : 2+5*3=<input type="text" name="answer" id="answer">
+		<br><br>
+		<button type="button" id="btnOK">정답확인</button>
+		<button type="reset" id="btnNO">다시시작</button>
+	</form>
+	
+	<div class="answerCheck okAnswer"><img src="images/ok.png"></div>
+	<div class="answerCheck noAnswer"><img src="images/no.png"></div>
+	
+</body>
+</html>
